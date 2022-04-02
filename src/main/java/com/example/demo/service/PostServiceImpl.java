@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.User1;
 import com.example.demo.domain.dto.PostV2;
+import com.example.demo.domain.dto.User1Dto;
+import com.example.demo.helper.ListMapper;
 import com.example.demo.repo.PostRepo;
 import com.example.demo.repo.User1Repo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     User1Repo user1Repo;
+
+    @Autowired
+    ListMapper<User1, User1Dto> listMapper;
 
     @Override
     public List<Post> findAll() {
@@ -45,13 +50,14 @@ public class PostServiceImpl implements PostService {
         postRepo.deleteById(id);
     }
 
-//    @Override
-//    public void update(int id, Post p) {
-//        postRepo.update(id, p);
-//    }
-//
-//    @Override
-//    public List<Post> getByAuthorName(String name) {
-//        return postRepo.getByAuthorName(name);
-//    }
+    @Override
+    public List<Post> findPostsByTitle(String title) {
+        return postRepo.findPostsByTitle(title);
+    }
+
+    @Override
+    public List<User1Dto> findUsersByPostTitle(String title) {
+        List<User1> list = user1Repo.findAll().stream().filter(u->u.getPosts().stream().anyMatch(p->p.getTitle().equals(title))).toList();
+        return (List<User1Dto>) listMapper.mapList(list, new User1Dto());
+    }
 }

@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Post;
+import com.example.demo.domain.dto.PostDto;
 import com.example.demo.domain.dto.PostV2;
+import com.example.demo.domain.dto.User1Dto;
 import com.example.demo.helper.ListMapper;
 import com.example.demo.service.PostService;
 import org.modelmapper.ModelMapper;
@@ -20,7 +22,7 @@ public class PostController {
     ModelMapper modelMapper;
 
     @Autowired
-    ListMapper<Post, PostV2> ProductListMapperToDto;
+    ListMapper<Post, PostDto> ProductListMapperToDto;
 
     @GetMapping
     public List<Post> getPosts(){
@@ -51,13 +53,17 @@ public class PostController {
 //        postService.update(id, p);
 //    }
 
-//    @GetMapping(params = "name")
-//    public List<PostV2> getPostsByAuthor(@RequestParam(value = "name", required = false) String name){
-//        List<PostV2> postV2s = name == null ? (List<PostV2>) ProductListMapperToDto.mapList(postService.findAll(), new PostV2())
-//                : (List<PostV2>) ProductListMapperToDto.mapList(postService.getByAuthorName(name), new PostV2());
-//        return postV2s;
-//
-//    }
+    @GetMapping(params = "title")
+    public List<PostDto> getPostsByTitle(@RequestParam(value = "title", required = false) String title){
+        List<PostDto> postDtos = (List<PostDto>) ProductListMapperToDto.mapList(postService.findPostsByTitle(title), new PostDto());
+        return postDtos;
+
+    }
+    @GetMapping(value = "/users", params = "title")
+    public List<User1Dto> getUsersByPostTitle(@RequestParam(value = "title", required = false) String title){
+        return postService.findUsersByPostTitle(title);
+
+    }
 
 
 }

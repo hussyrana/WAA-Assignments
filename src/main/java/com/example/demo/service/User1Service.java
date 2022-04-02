@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.Comment;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.User1;
 import com.example.demo.domain.dto.User1Dto;
@@ -12,4 +13,6 @@ public interface User1Service {
     User1Dto findById(int id);
     List<Post> findPostsByUserId(int id);
     List<User1Dto> findUsersByPostsGreaterThan(int n);
+    Comment getCommentOfPostOfUser(int userId, int postId, int commentId);
+    void deleteUserById(int id);
 }

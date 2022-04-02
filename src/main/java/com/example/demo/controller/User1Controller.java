@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Comment;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.User1;
 import com.example.demo.domain.dto.User1Dto;
@@ -37,6 +38,14 @@ public class User1Controller {
     @GetMapping(params = "postFilter")
     public List<User1Dto> getUsersByPostsGreaterThan(@RequestParam int postFilter){
         return user1Service.findUsersByPostsGreaterThan(postFilter);
+    }
+    @GetMapping("/{userId}/posts/{postId}/comments/{commentId}")
+    public Comment getCommentOfPostOfUser(@PathVariable("userId") int userId, @PathVariable("postId") int postId, @PathVariable("commentId") int commentId){
+        return user1Service.getCommentOfPostOfUser(userId, postId, commentId);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable("id") int id){
+        user1Service.deleteUserById(id);
     }
 
 }

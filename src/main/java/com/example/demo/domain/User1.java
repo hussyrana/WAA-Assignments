@@ -15,9 +15,8 @@ public class User1 {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
-    //@JsonManagedReference
     private List<Post> posts;
 
     public void addPost(Post p){

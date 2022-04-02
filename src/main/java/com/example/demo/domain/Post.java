@@ -1,11 +1,14 @@
 package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -20,8 +23,7 @@ public class Post {
     private String title;
     private String content;
     private String author;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    @JsonBackReference
-//    private User1 user1;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "post", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Comment> comments;
 }
