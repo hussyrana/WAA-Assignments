@@ -28,35 +28,36 @@ public class PostController {
     }
 
     @GetMapping(value="/{id}")
-    public Post getPostById(@PathVariable("id") long id){
+    public Post getPostById(@PathVariable("id") int id){
         return postService.getPost(id);
     }
 
     @GetMapping(value="/{id}", headers = "API-VERSION=2")
-    public PostV2 getPostByIdV2(@PathVariable("id") long id){
+    public PostV2 getPostByIdV2(@PathVariable("id") int id){
         return modelMapper.map(postService.getPost(id), PostV2.class);
     }
     @PostMapping
-    public void savePost(@RequestBody Post p){
+    public void savePost(@RequestBody PostV2 p){
         postService.save(p);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePostById(@PathVariable("id") long id){
+    public void deletePostById(@PathVariable("id") int id){
         postService.delete(id);
     }
 
-    @PutMapping("/{id}")
-    public void updatePostById(@PathVariable("id") long id, @RequestBody Post p){
-        postService.update(id, p);
-    }
+//    @PutMapping("/{id}")
+//    public void updatePostById(@PathVariable("id") int id, @RequestBody Post p){
+//        postService.update(id, p);
+//    }
 
-    @GetMapping(params = "name")
-    public List<PostV2> getPostsByAuthor(@RequestParam(value = "name", required = false) String name){
-        return name==null?(List<PostV2>)ProductListMapperToDto.mapList(postService.findAll(), new PostV2())
-                :(List<PostV2>) ProductListMapperToDto.mapList(postService.getByAuthorName(name), new PostV2());
-
-    }
+//    @GetMapping(params = "name")
+//    public List<PostV2> getPostsByAuthor(@RequestParam(value = "name", required = false) String name){
+//        List<PostV2> postV2s = name == null ? (List<PostV2>) ProductListMapperToDto.mapList(postService.findAll(), new PostV2())
+//                : (List<PostV2>) ProductListMapperToDto.mapList(postService.getByAuthorName(name), new PostV2());
+//        return postV2s;
+//
+//    }
 
 
 }

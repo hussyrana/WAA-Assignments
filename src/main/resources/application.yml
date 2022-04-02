@@ -2,12 +2,12 @@ spring:
   application:
     name: demo
   datasource:
-    password: 1
+    password: Jason121
     url: jdbc:postgresql://localhost:5432/Assignment1-DataBase
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

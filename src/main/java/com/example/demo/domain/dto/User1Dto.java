@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostV2 {
-    private long id;
-    private String title;
-    private String content;
-    private String Author;
-    private int userId;
+public class User1Dto {
+    private Integer id;
+    private String name;
 }
