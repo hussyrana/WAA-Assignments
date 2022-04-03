@@ -1,11 +1,8 @@
-package com.example.demo.repo;
+package com.example.demo.service.repo;
 
 import com.example.demo.domain.Post;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-//import com.example.demo.domain.dto.PostV2;
-//import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 

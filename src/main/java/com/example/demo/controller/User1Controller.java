@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.aspect.annotation.LoggerAnnotation;
 import com.example.demo.domain.Comment;
 import com.example.demo.domain.Post;
 import com.example.demo.domain.User1;
@@ -27,7 +28,9 @@ public class User1Controller {
         user1Service.save(user);
     }
 
+
     @GetMapping("/{id}")
+    @LoggerAnnotation
     public User1Dto getUserById(@PathVariable("id") int id){
         return user1Service.findById(id);
     }

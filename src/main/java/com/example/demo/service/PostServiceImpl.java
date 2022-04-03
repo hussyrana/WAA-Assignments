@@ -5,8 +5,8 @@ import com.example.demo.domain.User1;
 import com.example.demo.domain.dto.PostV2;
 import com.example.demo.domain.dto.User1Dto;
 import com.example.demo.helper.ListMapper;
-import com.example.demo.repo.PostRepo;
-import com.example.demo.repo.User1Repo;
+import com.example.demo.service.repo.PostRepo;
+import com.example.demo.service.repo.User1Repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

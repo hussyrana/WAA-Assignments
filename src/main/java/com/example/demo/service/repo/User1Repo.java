@@ -1,9 +1,7 @@
-package com.example.demo.repo;
+package com.example.demo.service.repo;
 
 
-import com.example.demo.domain.Post;
 import com.example.demo.domain.User1;
-import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

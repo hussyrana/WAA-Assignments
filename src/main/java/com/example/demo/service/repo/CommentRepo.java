@@ -1,4 +1,4 @@
-package com.example.demo.repo;
+package com.example.demo.service.repo;
 
 import com.example.demo.domain.Comment;
 import org.springframework.data.repository.CrudRepository;
