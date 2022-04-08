@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Comment;
 import com.example.demo.domain.dto.CommentDto;
-import com.example.demo.service.repo.CommentRepo;
+import com.example.demo.repo.CommentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

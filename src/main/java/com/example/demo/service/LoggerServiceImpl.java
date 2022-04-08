@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Logger;
-import com.example.demo.service.repo.LoggerRepo;
+import com.example.demo.repo.LoggerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
